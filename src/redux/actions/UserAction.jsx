@@ -1,0 +1,9 @@
+const UserActions = {
+  USER_GET: 'USER_GET',
+  USER_GOT: 'USER_GOT',
+  USER_GOT_FAILED: 'USER_GOT_FAILED',
+  USER_LOADING: 'USER_LOADING',
+  SEARCH_NAME_CHANGED: 'SEARCH_NAME_CHANGED',
+}
+
+export default UserActions

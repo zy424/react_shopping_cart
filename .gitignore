@@ -1,0 +1,35 @@
+
+*.iml
+
+## Directory-based project format:
+.idea/
+
+## File-based project format:
+*.ipr
+*.iws
+
+## Plugin-specific files:
+
+# IntelliJ
+/out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# NodeJS modules folder
+node_modules
+
+# npm debug log
+npm-debug.log
+# Yarn error log
+yarn-error.log
+# vs code
+.vscode
+
+# coverage
+
+/coverage
+/dist
