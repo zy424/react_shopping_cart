@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Root from '../../src/Root';
-import App from '../../src/containers/App';
+import App from '../../src/containers/App-1';
 
 configure({ adapter: new Adapter() });
 

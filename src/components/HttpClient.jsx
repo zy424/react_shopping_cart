@@ -1,4 +1,4 @@
-import {history} from "app/pages/Routes"
+import {history} from "app/layouts/Routes"
 import axios from "axios"
 
 const httpClient = axios.create({
