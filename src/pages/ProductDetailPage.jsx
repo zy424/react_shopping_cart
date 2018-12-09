@@ -21,6 +21,7 @@ class ProductDetailPage extends React.Component {
     const params = this.props.match.params
     const {classes, products} = this.props
     const product = products[params.index]
+    console.log(product)
     return (
       <Grid container spacing={32}  className={classes.container}>
         <Grid item xs={12} md={6}>

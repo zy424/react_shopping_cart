@@ -1,23 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import FavoriteIcon from '@material-ui/icons/Favorite'
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
 import CardActionArea from '@material-ui/core/CardActionArea'
-import IconButton from '@material-ui/core/IconButton'
-import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
-import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
 import {withStyles} from '@material-ui/core/styles'
-
-import slider_1 from 'app/assets/images/img_bg_1.jpg'
-import slider_2 from 'app/assets/images/img_bg_2.jpg'
-import slider_3 from 'app/assets/images/img_bg_3.jpg'
-import {history} from "app/layouts/Routes";
 
 
 const styles = theme => ({
@@ -47,6 +35,15 @@ const styles = theme => ({
 
 
 class ProductImage extends React.Component {
+
+  state = {
+    img: this.props.product.images[0],
+  }
+  handleImage = (image) => {
+    let {img} = this.state
+    this.setState({img: image})
+  }
+
   render() {
     const {classes,product} = this.props
     const images = product.images
@@ -59,8 +56,8 @@ class ProductImage extends React.Component {
                 <CardActionArea >
                   <CardMedia
                     className={classes.cardMedia}
-                    image={images[0]}
-                    title="User avatar"
+                    image={this.state.img}
+                    title={product.name}
                   />
                 </CardActionArea>
               </Card>
@@ -72,7 +69,8 @@ class ProductImage extends React.Component {
                     <CardMedia
                       className={classes.cardMedia}
                       image={image}
-                      title="User avatar"
+                      title={product.name}
+                      onClick = {() => this.handleImage(image)}
                     />
                   </CardActionArea>
                 </Card>
