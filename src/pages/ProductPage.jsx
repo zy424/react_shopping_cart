@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import FavoriteIcon from '@material-ui/icons/Favorite'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
@@ -13,11 +12,8 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import {withStyles} from '@material-ui/core/styles'
-
-import slider_1 from 'app/assets/images/img_bg_1.jpg'
-import slider_2 from 'app/assets/images/img_bg_2.jpg'
-import slider_3 from 'app/assets/images/img_bg_3.jpg'
-import {history} from "app/layouts/Routes";
+import { connect } from 'react-redux'
+import {history} from "app/layouts/Routes"
 
 
 const styles = theme => ({
@@ -60,42 +56,12 @@ const styles = theme => ({
   }
 })
 
-const products = [
-  {
-    img: slider_1,
-    Name: 'DRESS',
-    Price: '$129',
-  },
-  {
-    img: slider_2,
-    Name: 'dress',
-    Price: '$129',
-  },
-  {
-    img: slider_3,
-    Name: 'dress',
-    Price: '$129',
-  },
-  {
-    img: slider_1,
-    Name: 'dress',
-    Price: '$129',
-  },
-  {
-    img: slider_2,
-    Name: 'dress',
-    Price: '$129',
-  },
-  {
-    img: slider_3,
-    Name: 'dress',
-    Price: '$129',
-  },
-]
 
 class ProductPage extends React.Component {
+
   render() {
-    const { classes} = this.props
+    const { classes,products} = this.props
+    console.log(products)
       return (
         <React.Fragment>
           <main>
@@ -104,16 +70,16 @@ class ProductPage extends React.Component {
                 {products.map((product, index) => (
                   <Grid item key={index} sm={6} md={4} lg={3}>
                     <Card className={classes.card}>
-                      <CardActionArea href='/product-detail'>
+                      <CardActionArea onClick={()=> history.push(`/product-detail/${index}`)}>
                         <CardMedia
                           className={classes.cardMedia}
-                          image={product.img}
+                          image={product.getAttribute('images[0]')}
                           title="User avatar"
                         />
                       </CardActionArea>
                       <CardActions>
                       <Typography>
-                        {product.Name}: {product.Price}
+                        {product.getAttribute('name')}: ${product.getAttribute('price')}
                       </Typography>
                         <IconButton
                           aria-label="add to cart"
@@ -129,7 +95,6 @@ class ProductPage extends React.Component {
               </Grid>
             </div>
           </main>
-
         </React.Fragment>
       )
     }
@@ -137,5 +102,8 @@ class ProductPage extends React.Component {
 
 ProductPage.propTypes = {
   classes: PropTypes.object.isRequired,
+  products: PropTypes.array.isRequired,
 }
-export default withStyles(styles)(ProductPage)
+export default connect(store => ({
+  products: store.product.products,
+}))(withStyles(styles)(ProductPage))

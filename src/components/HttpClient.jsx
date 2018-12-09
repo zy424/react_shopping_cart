@@ -22,7 +22,7 @@ httpClient.interceptors.response.use(
   (res) => {
     switch (res.response.status) {
       case 401:
-        history.push("/login")
+        history.push("/")
         return Promise.reject(res.response)
       case 404:
         history.push("/page-not-found")

@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {Card,  withStyles, CardHeader, CardContent, Avatar, IconButton} from '@material-ui/core'
-import MoreVertIcon from '@material-ui/icons/MoreVert'
+import {connect} from 'react-redux'
+import {action} from 'app/redux/Store'
+import {Card,  withStyles, CardContent,} from '@material-ui/core'
 
-import CartList from 'app/components/CartList'
+import CartAction from 'app/redux/actions/CartAction'
+import CartList from 'app/components/cart/CartList'
 
 
 const styles= theme =>({
@@ -18,21 +20,33 @@ const styles= theme =>({
   }
 })
 class CartPage extends Component{
-
   render(){
-    const { classes} = this.props
+    const { classes,count} = this.props
     return(
       <Card>
         <CardContent className={classes.background}>
-          <CartList/>
+          <CartList
+            count = {count}
+            onAddClick = {this.onAddClick}
+            onRemoveClick = {this.onRemoveClick}
+          />
         </CardContent>
       </Card>
     )
+  }
+  onAddClick = (e) => {
+    action(CartAction.ADD_PRODUCT, this.props.count)
+  }
+  onRemoveClick = (e) => {
+    action(CartAction.REMOVE_PRODUCT, this.props.count)
   }
 }
 
 CartPage.propTypes = {
   classes: PropTypes.object.isRequired,
+  count: PropTypes.number.isRequired,
 }
 
-export default withStyles(styles)(CartPage)
+export default connect(store => ({
+  count: store.cart.count,
+}))(withStyles(styles)(CartPage))

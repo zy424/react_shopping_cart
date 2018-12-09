@@ -29,7 +29,7 @@ class CartItem extends Component{
     }
   }
   render(){
-    const {classes} = this.props
+    const{count, classes, onAddClick, onRemoveClick} = this.props
     return(
       <TableRow>
         <TableCell >
@@ -39,14 +39,14 @@ class CartItem extends Component{
         <TableCell>S</TableCell>
         <TableCell>$123</TableCell>
         <TableCell>
-          <IconButton aria-label="remove" >
+          <IconButton aria-label="remove" onClick ={onRemoveClick} >
             <RemoveCircleIcon color='secondary'/>
           </IconButton>
           <TextField
-            defaultValue="1"
             className={classes.input}
+            value={count}
           />
-          <IconButton aria-label="add">
+          <IconButton aria-label="add" onClick={onAddClick} >
             <AddCircleIcon color='secondary'/>
           </IconButton>
         </TableCell>
@@ -62,5 +62,8 @@ class CartItem extends Component{
 
 CartItem.propTypes = {
   classes: PropTypes.object.isRequired,
+  count: PropTypes.number.isRequired,
+  onAddClick: PropTypes.func.isRequired,
+  onRemoveClick: PropTypes.func.isRequired,
 }
 export default withStyles(styles)(CartItem)

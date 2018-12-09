@@ -11,6 +11,7 @@ class CartList extends Component{
   render(){
     // const {products} = this.props
     // const display = products.length === 0 ? 'block' : 'none'
+    const{ count, onAddClick, onRemoveClick} = this.props
     return(
       <div >
         <Typography variant="h6" component = 'h6'><ShoppingCartIcon color='secondary'/>&nbsp;Shopping Cart</Typography>
@@ -28,10 +29,13 @@ class CartList extends Component{
               </TableRow>
             </TableHead>
 
-
             <TableBody>
               {
-                <CartItem />
+                <CartItem
+                  onAddClick = {onAddClick}
+                  onRemoveClick = {onRemoveClick}
+                  count = {count}
+                />
               }
             </TableBody>
           </Table>
@@ -41,6 +45,8 @@ class CartList extends Component{
   }
 }
 CartList.propTypes = {
-
+  count: PropTypes.number.isRequired,
+  onAddClick: PropTypes.func.isRequired,
+  onRemoveClick: PropTypes.func.isRequired,
 }
 export default CartList

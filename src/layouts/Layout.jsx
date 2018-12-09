@@ -41,7 +41,6 @@ class Layout extends React.Component {
     return (
       <MuiThemeProvider theme={theme}>
         <div className={classes.root}>
-
           <CssBaseline/>
           <Header />
           <Main/>

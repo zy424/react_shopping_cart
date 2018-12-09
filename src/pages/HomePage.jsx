@@ -4,6 +4,8 @@ import { withStyles } from '@material-ui/core/styles'
 import SwipeableViews from 'react-swipeable-views'
 import { autoPlay } from 'react-swipeable-views-utils'
 
+import {action} from 'app/redux/Store'
+import ProductAction from 'app/redux/actions/ProductAction'
 import slider_1 from 'app/assets/images/img_bg_1.jpg'
 import slider_2 from 'app/assets/images/img_bg_2.jpg'
 import slider_3 from 'app/assets/images/img_bg_3.jpg'
@@ -39,6 +41,8 @@ const styles = theme => ({
 });
 
 class HomePage extends React.Component {
+
+
   state = {
     activeStep: 0,
   }

@@ -1,8 +1,8 @@
 import {all} from "redux-saga/effects"
-import watchUserAsync from "app/redux/sagas/UserSaga"
+import watchProductAsync from "app/redux/sagas/ProductSaga"
 
 export default function* rootSaga() {
   yield all([
-    watchUserAsync(),
+    watchProductAsync(),
   ])
 }

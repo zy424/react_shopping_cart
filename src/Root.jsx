@@ -4,7 +4,7 @@ import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { store } from 'app/redux/Store';
 import {history} from "app/layouts/Routes"
-import App from 'app/containers/App';
+import App from 'app/App';
 
 const Root = () => {
   return (

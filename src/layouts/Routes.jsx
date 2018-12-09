@@ -6,6 +6,7 @@ import ProductPage from "app/pages/ProductPage"
 import ProductDetailPage from "app/pages/ProductDetailPage"
 import {NavLink, Route, Switch, withRouter} from 'react-router-dom'
 
+
 // Create a history
 export const history = createBrowserHistory()
 
@@ -17,7 +18,7 @@ class Routes extends React.Component{
           <Switch>
             <Route exact path='/' component={HomePage}/>
             <Route exact path='/products' component={ProductPage}/>
-            <Route exact path='/product-detail' component={ProductDetailPage}/>
+            <Route exact path='/product-detail/:index' component={ProductDetailPage}/>
             <Route exact path='/shopping-cart' component={CartPage}/>
             <Route render={(props) => {
               return (<h3>Page Not Found</h3>)
